@@ -21,7 +21,7 @@
 - Internal Storage (Since it is not a stock ROM, there are no necessary things. We are working on it)
 
 ## Notes
-- To decrypt encryption, execute this in TWRP terminal:
+- To decrypt, execute the following command in TWRP terminal:
 ```
 bash decrypt
 ```
