@@ -1,0 +1,11 @@
+# Initial fstab file, need more improvement
+
+# Main Partitions ext4
+/dev/block/by-name/system          /system         ext4        rw      mounttodecrypt
+/dev/block/by-name/vendor          /vendor         ext4        rw      mounttodecrypt
+
+# Other Partitions                                                                                    wait,check,formattable,first_stage_mount
+/dev/block/by-name/userdata     /data       ext4                noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt       wait,check,formattable,quota,reservedsize=128m,latemount,resize,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+/dev/block/by-name/boot         /boot       emmc
+/dev/block/by-name/recovery     /recovery   emmc
+/dev/block/by-name/boot         /cache      ext4               rw
