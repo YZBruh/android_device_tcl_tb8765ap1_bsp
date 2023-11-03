@@ -21,7 +21,15 @@
 - Internal Storage (Since it is not a stock ROM, there are no necessary things. We are working on it)
 
 ## Notes
-- /vendor/etc/*.fstab must be patched for encryption solution.
+- To decrypt encryption, execute this in TWRP terminal:
+```
+bash decrypt
+```
+To re-encrypt:
+```
+bash encrypt
+```
+Scripts language is Turkish! If the process is completed successfully, format the data partition as EXT4.
 - Report problems.
 - Stock images in publications
 
