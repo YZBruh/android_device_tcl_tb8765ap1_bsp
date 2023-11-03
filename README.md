@@ -31,6 +31,8 @@ bash encrypt
 ```
 Scripts language is Turkish! If the process is completed successfully, format the data partition as EXT4.
 - Report problems.
+- I would be happy if those who own the device could reach me via telegram.
+- Telegram: @YZBruh
 - Stock images in publications
 
 ## Credits
