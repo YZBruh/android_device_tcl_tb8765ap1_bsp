@@ -9,13 +9,13 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from tb8765ap1_bsp device
 $(call inherit-product, device/tcl/tb8765ap1_bsp/device.mk)
 
 PRODUCT_DEVICE := tb8765ap1_bsp
-PRODUCT_NAME := omni_tb8765ap1_bsp
+PRODUCT_NAME := twrp_tb8765ap1_bsp
 PRODUCT_BRAND := TCL
 PRODUCT_MODEL := 8088X
 PRODUCT_MANUFACTURER := tcl
