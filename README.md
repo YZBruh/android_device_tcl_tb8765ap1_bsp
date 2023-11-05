@@ -23,11 +23,11 @@
 ## Notes
 - To decrypt, execute the following command in TWRP terminal:
 ```
-bash decrypt
+decrypt
 ```
 To re-encrypt:
 ```
-bash encrypt
+encrypt
 ```
 Scripts language is Turkish! If the process is completed successfully, format the data partition as EXT4.
 - Report problems.
