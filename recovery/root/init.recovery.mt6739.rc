@@ -1,49 +1,56 @@
-import /trustkernel.rc
-
-on init
-    export LD_LIBRARY_PATH /system/lib:/vendor/lib:/vendor/lib/hw:/system/lib/hw
-
-    # Fix OF installer
-    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
-
-    # Support A/B feature for boot region
+on post-fs
+    # Support A/B feature for EMMC boot region
     symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
 
-on fs
-    install_keyring
-
-service keystore /system/bin/keystore /tmp/misc/keystore
-    user root
-    group root drmrpc readproc log
-    disabled
+service vendor.keymaster-3-0 /system/bin/hw/android.hardware.keymaster@3.0-service
+    class early_hal
+    #user system
+    #group system drmrpc
     seclabel u:r:recovery:s0
+	disabled
 
-service keymaster-3-0 /system/bin/hw/android.hardware.keymaster@3.0-service
-    user root
-    group root drmrpc
-    disabled
-    oneshot
+service keymaster_attestation-1-1 /system/bin/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service
+    interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
+    class hal
+    #user system
+    #group system
     seclabel u:r:recovery:s0
+    disabled
 
-service gatekeeper-1-0 /system/bin/hw/android.hardware.gatekeeper@1.0-service
+service servicemanager /sbin/servicemanager
+    user root
+    group root readproc
+    writepid /dev/cpuset/system-background/tasks
+    seclabel u:r:recovery:s0
+	disabled
+
+service hwservicemanager /sbin/hwservicemanager
     user root
     group root
-    disabled
+    onrestart setprop hwservicemanager.ready false
     seclabel u:r:recovery:s0
+    disabled
 
-on property:vendor.sys.listener.registered=true
-    start keymaster-3-0
-    start gatekeeper-1-0
+service teed /sbin/teed \
+    --datapath /data/vendor/t6/fs \
+    --sptapath /data/vendor/t6/app \
+    --systapath /vendor/app/t6 \
+    --prot /mnt/vendor/persist/t6 \
+    --logpath /data/vendor/t6/tkcore.log \
+    --proprefix vendor.trustkernel
+	#user system
+	#group system
+	class core
 
-on property:ro.crypto.state=unsupported
-    stop keymaster-3-0
-    stop gatekeeper-1-0
-    
-on property:ro.crypto.state=unencrypted
-    stop keymaster-3-0
-    stop gatekeeper-1-0
-    
-on property:twrp.decrypt.done=true
-    stop keymaster-3-0
-    stop gatekeeper-1-0
+    seclabel u:r:recovery:s0
+	disabled
+
+on fs
+    mkdir /tmp-pst
+	mount ext4 /dev/block/platform/bootdevice/by-name/persist /tmp-pst
+    start teed
+    start servicemanager
+	start hwservicemanager
+	start vendor.keymaster-3-0
+	start keymaster_attestation-1-1
