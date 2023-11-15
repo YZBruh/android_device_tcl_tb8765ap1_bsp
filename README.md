@@ -21,15 +21,6 @@
 - Internal Storage (Since it is not a stock ROM, there are no necessary things. We are working on it)
 
 ## Notes
-- To decrypt, execute the following command in TWRP terminal:
-```
-decrypt
-```
-To re-encrypt:
-```
-encrypt
-```
-Scripts language is Turkish! If the process is completed successfully, format the data partition as EXT4.
 - Report problems.
 - I would be happy if those who own the device could reach me via telegram.
 - Telegram: @YZBruh
