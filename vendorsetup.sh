@@ -26,7 +26,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
            export PLATFORM_SECURITY_PATCH="2099-12-31"
            export TW_DEFAULT_LANGUAGE="en"
            export LC_ALL="C"
-           export FOX_AB_DEVICE=1
            export OF_USE_GREEN_LED=0
            export OF_FBE_METADATA_MOUNT_IGNORE=1
            export OF_USE_MAGISKBOOT=1
