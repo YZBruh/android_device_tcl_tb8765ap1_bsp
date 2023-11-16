@@ -61,6 +61,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
         # -- add settings for build version --
         export FOX_R11=1
+        export FOX_VERSION=R11.1_1
         export OF_MAINTAINER="YZ-Bruh"
         export FOX_BUILD_TYPE="Beta"
 
