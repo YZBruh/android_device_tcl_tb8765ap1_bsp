@@ -28,9 +28,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
            export LC_ALL="C"
            export OF_USE_GREEN_LED=0
            export OF_FBE_METADATA_MOUNT_IGNORE=1
-           export OF_USE_MAGISKBOOT=1
+           export OF_USE_MAGISKBOOT=0
            export OF_USE_NEW_MAGISKBOOT=1
-           export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
+           export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=0
            export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
         export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
         export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
@@ -48,6 +48,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export FOX_ENABLE_APP_MANAGER=1
         export FOX_DISABLE_APP_MANAGER=0
         export OF_DEFAULT_KEYMASTER_VERSION=3.0
+        export FOX_RECOVERY_INSTALL_PARTITION=/dev/block/by-name/recovery
+        export FOX_RECOVERY_SYSTEM_PARTITION=/dev/block/by-name/system
+        export FOX_RECOVERY_VENDOR_PARTITION=/dev/block/by-name/vendor
+        export FOX_RECOVERY_BOOT_PARTITION=/dev/block/by-name/boot
 
         # use system (ROM) fingerprint where available
         export OF_USE_SYSTEM_FINGERPRINT=0
