@@ -117,5 +117,4 @@ SHRP_EXTERNAL := /external_sd
 SHRP_INTERNAL := /sdcard
 SHRP_OTG := /usb_otg
 SHRP_REC := /dev/block/platform/bootdevice/by-name/recovery
-SHRP_LITE := true
 SHRP_NO_SAR_AUTOMOUNT := true
