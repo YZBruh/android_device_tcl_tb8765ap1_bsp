@@ -112,6 +112,7 @@ SHRP_REC_TYPE := normal
 SHRP_DEVICE_TYPE := A_only
 SHRP_AB := false
 SHRP_EDL_MODE := 0
+SHRP_LITE := true
 SHRP_EXTERNAL := /external_sd
 SHRP_INTERNAL := /sdcard
 SHRP_OTG := /usb_otg
