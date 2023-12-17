@@ -84,9 +84,6 @@ PLATFORM_VERSION := 16.1.0
 # Hardware
 BOARD_USES_MTK_HARDWARE := true
 
-# system-as-root
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-
 # TWRP-Specific configuration
 TW_THEME := portrait_hdpi
 TW_DEVICE_VERSION := tb8765ap1_bsp
