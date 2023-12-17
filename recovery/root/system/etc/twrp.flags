@@ -36,6 +36,9 @@
 /loader_ext1                emmc        /dev/block/by-name/loader_ext1
 /loader_ext2                emmc        /dev/block/by-name/loader_ext2
 
+# İnternal storage
+/sdcard                     ext4        /data/media/0  
+
 # External Partitions
 /external_sd              auto     /dev/block/mmcblk0p1         /dev/block/mmcblk0   flags=display="MicroSD Card";storage;wipeingui;removable
 /usb_otg                  auto     /dev/block/sda1              /dev/block/sda       flags=display="USB-OTG";storage;wipeingui;removable
