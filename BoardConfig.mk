@@ -103,3 +103,34 @@ TW_HAS_MTP := true
 # Debug
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+
+# Path of your SHRP Tree
+SHRP_PATH := device/tcl/tb8765ap1_bsp
+# Maintainer name *
+SHRP_MAINTAINER := YZ-Bruh
+# Device codename *
+SHRP_DEVICE_CODE := tb8765ap1_bsp
+# Recovery Type (It can be treble,normal,SAR) [Only for About Section] *
+SHRP_REC_TYPE := normal
+# Recovery Type (It can be A/B or A_only) [Only for About Section] *
+SHRP_DEVICE_TYPE := A/B
+
+# Use this flag only if your device is A/B *
+SHRP_AB := true
+
+# put this 0 if device has no EDL mode *
+SHRP_EDL_MODE := 0
+
+# Put your device's paths from fstab *
+SHRP_EXTERNAL := /external_sd
+SHRP_INTERNAL := /sdcard
+SHRP_OTG := /usb_otg
+
+# Check your device's recovery path, dont use blindly *
+SHRP_REC := /dev/block/platform/bootdevice/by-name/recovery
+
+# SHRP Lite To exclude theming as PArtition Size only 16 MB For everyone
+SHRP_LITE := true
+
+# Force mount system in /system despite SAR policy, useful for maintaining backwards compatibility and/or Samsung devices. [Optional]
+SHRP_NO_SAR_AUTOMOUNT := true
