@@ -63,7 +63,7 @@ BOARD_USES_MTK_HARDWARE := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := false
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system_root/system/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Assert
@@ -99,6 +99,7 @@ TW_INCLUDE_LIBRESETPROP := true
 
 # Device
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 225
 TW_DEFAULT_BRIGHTNESS := 100
 TW_NO_HAPTICS := true
 RECOVERY_SDCARD_ON_DATA := true
