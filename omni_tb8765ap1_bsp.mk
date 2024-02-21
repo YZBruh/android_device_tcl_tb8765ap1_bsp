@@ -1,6 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
-$(call inherit-product, device/tcl/tb8765ap1_bsp/device.mk)
 
 # Device info
 PRODUCT_DEVICE := tb8765ap1_bsp
