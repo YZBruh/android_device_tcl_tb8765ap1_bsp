@@ -1,0 +1,9 @@
+# Initial fstab file, need more improvement
+
+# Main Partitions ext4
+/dev/block/by-name/system          /system         ext4        ro
+/dev/block/by-name/vendor          /vendor         ext4        rw
+
+# Other Partitions 
+/dev/block/by-name/userdata     /data       ext4                noatime,nosuid,nodev,noauto_da_alloc,errors=panic wait,check,formattable,quota,reservedsize=128m,formattable,resize,encryptable=/dev/block/platform/bootdevice/by-name/metadata
+/dev/block/by-name/cache        /cache      ext4
