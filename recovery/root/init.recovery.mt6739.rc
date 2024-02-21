@@ -19,6 +19,8 @@ on post-fs-data
 # Support A/B feature for boot region
     symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
+    symlink /dev/block/mmcblk0boot0 /dev/block/by-name/preloader_a
+    symlink /dev/block/mmcblk0boot1 /dev/block/by-name/preloader_b
 
 on property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP
