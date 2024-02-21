@@ -9,22 +9,43 @@
 |Android Version     |9                                                             |
 |Storage             |16/32GB                                                       |
 
-## Working Feature
-- Vibration (device does not support)
-- Flashing .img/zip
-- ADB Sideload
-- Terminal/Console
-- External Storage (SD and OTG)
-- MTP
+## Situation
+- [X] Correct screen/recovery size
+- [x] Working Touch, screen
+- [X] Backup to internal/microSD
+- [X] Restore from internal/microSD
+- [x] reboot to system
+- [X] ADB
 
-## Bugs and Issues
-- Internal Storage (Since it is not a stock ROM, there are no necessary things. We are working on it)
+Medium checks
+- [X] update.zip sideload
+- [X] UI colors (red/blue inversions)
+- [X] Screen goes off and on
+- [X] F2FS/EXT4 Support, exFAT/NTFS where supported
+- [X] all important partitions listed in mount/backup lists
+- [X] backup/restore to/from external (USB-OTG) storage
+- [X] backup/restore to/from adb (https://gerrit.omnirom.org/#/c/15943/)
+- [ ] decrypt /data
+- [X] Correct date
+
+Minor checks
+- [X] MTP export
+- [X] reboot to bootloader
+- [X] reboot to recovery
+- [X] poweroff
+- [X] battery level
+- [X] temperature
+- [X] encrypted backups
+- [x] input devices via USB (USB-OTG) - keyboard, mouse and disks
+- [x] USB mass storage export
+- [x] set brightness
+- [x] vibrate (not supporting)
+- [X] screenshot
+- [x] partition SD card
 
 ## Notes
-- Report problems.
-- I would be happy if those who own the device could reach me via telegram.
 - Stock images in publications
 
 ## Credits
-- TeamWin Recovery Project (Source)
+- [TeamWin Recovery Project (Source)](https://github.com/TeamWin)
 - Thank you [kelexine](https://github.com/kelexine)
