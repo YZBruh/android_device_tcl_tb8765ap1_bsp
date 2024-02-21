@@ -1,8 +1,6 @@
 import /trustkernel.rc
 
 on init
-    # Somehow AOSP build system hasn't provided a symlink here
-    symlink /system_root/system /system
     # Create a more standard /dev/block layout for our scripts
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 
@@ -29,9 +27,6 @@ on init
     symlink /sbin/gatekeeper.mt6739.so /vendor/lib64/hw/gatekeeper.mt6739.so
     start hwservicemanager
     setprop crypto.ready 1
-
-on fs
-    export ANDROID_ROOT /system_root
 
 on post-fs-data
 # Support A/B feature for boot region
