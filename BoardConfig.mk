@@ -1,4 +1,6 @@
 DEVICE_PATH := device/tcl/tb8765ap1_bsp
+
+# Special variable for prebuilt directory to provide faster access 
 PREBUILT_DIR := $(DEVICE_PATH)/prebuilt
 
 # For building with minimal manifest
@@ -12,6 +14,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := generic
 
+# arm32-binder-64 | a64
 TARGET_USES_64_BIT_BINDER := true
 
 # APEX
@@ -45,14 +48,18 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
-# Partitions
+# Boot and recovery partition sizes
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
+
+# File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := false
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Hardware
@@ -61,8 +68,6 @@ BOARD_USES_MTK_HARDWARE := true
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := false
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system_root/system/etc/recovery.fstab
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
@@ -78,12 +83,15 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 # System-as-root and metadata
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
+
+# create a directory named metadata in the root directory
 BOARD_ROOT_EXTRA_FOLDERS += metadata
 
 # TWRP Configuration
 RECOVERY_VARIANT := twrp
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
+TW_DEFAULT_LANGUAGE := en
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
@@ -101,7 +109,7 @@ TW_INCLUDE_LIBRESETPROP := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 225
 TW_DEFAULT_BRIGHTNESS := 100
-TW_NO_HAPTICS := true
+TW_NO_HAPTICS := true # not supported by device
 RECOVERY_SDCARD_ON_DATA := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 
