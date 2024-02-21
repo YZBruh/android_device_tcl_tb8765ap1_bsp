@@ -43,6 +43,9 @@ Minor checks
 - [X] screenshot
 - [x] partition SD card
 
+## Device picture
+![picture-3t-10](https://www.alcatelmobile.com/tr/wp-content/uploads/2019/06/alcatel_alcatel3T10_component_mobile_1.png)
+
 ## Credits
 - [TeamWin Recovery Project (Source)](https://github.com/TeamWin)
 - Thank you [kelexine](https://github.com/kelexine)
