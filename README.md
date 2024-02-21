@@ -1,4 +1,4 @@
-# TWRP device tree for Alcatel 3T 10 EEA
+# TWRP device tree for Alcatel 3T 10
 
 |Basic               |Spec Sheet                                                    |
 |--                  |--                                                            |
