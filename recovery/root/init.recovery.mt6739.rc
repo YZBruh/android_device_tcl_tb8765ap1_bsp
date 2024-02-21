@@ -23,7 +23,7 @@ on init
 
     mkdir /vendor/lib64 0700 root root
     mkdir /vendor/lib64/hw 0700 root root
-    symlink /vendor/manifest.xml /system_root/system/manifest.xml
+    symlink /vendor/etc/vintf/manifest.xml /system_root/system/etc/vintf/manifest.xml
     symlink /sbin/keystore.mt6739.so /vendor/lib64/hw/keystore.mt6739.so
     symlink /sbin/keystore.v2.trustkernel.so /vendor/lib64/hw/keystore.v2.trustkernel.so
     symlink /sbin/gatekeeper.mt6739.so /vendor/lib64/hw/gatekeeper.mt6739.so
