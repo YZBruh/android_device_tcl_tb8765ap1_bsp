@@ -43,9 +43,6 @@ Minor checks
 - [X] screenshot
 - [x] partition SD card
 
-## Notes
-- Stock images in publications
-
 ## Credits
 - [TeamWin Recovery Project (Source)](https://github.com/TeamWin)
 - Thank you [kelexine](https://github.com/kelexine)
