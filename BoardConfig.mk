@@ -81,6 +81,7 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_ROOT_EXTRA_FOLDERS += metadata
 
 # TWRP Configuration
+RECOVERY_VARIANT := twrp
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
@@ -88,13 +89,13 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_DEVICE_VERSION := tb8765ap1_bsp-eea
+TW_INCLUDE_NTFS_3G := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := false
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP := true
-TW_INCLUDE_LPDUMP := true
 
 # Device
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
@@ -105,5 +106,3 @@ TW_PREPARE_DATA_MEDIA_EARLY := true
 
 # Crypto binary
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
