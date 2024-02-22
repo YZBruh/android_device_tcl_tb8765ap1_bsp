@@ -19,12 +19,11 @@ on init
     mkdir /config/usb_gadget/g1/functions/ffs.adb
     setprop sys.usb.ffs.aio_compat 1
 
-    mkdir /vendor/lib64 0700 root root
-    mkdir /vendor/lib64/hw 0700 root root
-    symlink /vendor/etc/vintf/manifest.xml /system_root/system/etc/vintf/manifest.xml
-    symlink /sbin/keystore.mt6739.so /vendor/lib64/hw/keystore.mt6739.so
-    symlink /sbin/keystore.v2.trustkernel.so /vendor/lib64/hw/keystore.v2.trustkernel.so
-    symlink /sbin/gatekeeper.mt6739.so /vendor/lib64/hw/gatekeeper.mt6739.so
+    mkdir /vendor/lib 0700 root root
+    mkdir /vendor/lib/hw 0700 root root
+    symlink /sbin/keystore.mt6739.so /vendor/lib/hw/keystore.mt6739.so
+    symlink /sbin/keystore.v2.trustkernel.so /vendor/lib/hw/keystore.v2.trustkernel.so
+    symlink /sbin/gatekeeper.mt6739.so /vendor/lib/hw/gatekeeper.mt6739.so
     start hwservicemanager
     setprop crypto.ready 1
 
