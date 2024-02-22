@@ -102,8 +102,8 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
-TW_INCLUDE_RESETPROP := true
-TW_INCLUDE_LIBRESETPROP := true
+TW_EXCLUDE_NANO := true
+TW_EXCLUDE_PYTHON := true
 
 # Device
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
