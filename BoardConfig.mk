@@ -69,7 +69,6 @@ BOARD_USES_MTK_HARDWARE := true
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system_root/system/etc/recovery.fstab
-TARGET_TWRP_FLAGS := $(DEVICE_PATH)/recovery/root/system_root/system/etc/twrp.flags
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp,8088X,8088X_EEA
