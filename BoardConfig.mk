@@ -72,7 +72,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system_root/system/etc/rec
 TARGET_TWRP_FLAGS := $(DEVICE_PATH)/recovery/root/system_root/system/etc/twrp.flags
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp
+TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp,8088X,8088X_EEA
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
