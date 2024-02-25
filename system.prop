@@ -1,6 +1,0 @@
-# Hardware
-ro.mediatek.platform=MT6739
-ro.hardware=mt6739
-
-# Treble
-ro.treble.enabled=true
