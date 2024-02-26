@@ -15,6 +15,7 @@ on post-fs
 	symlink /mnt/vendor/nvcfg /vendor/nvcfg
 	symlink /mnt/vendor/nvdata /vendor/nvdata
         symlink /mnt/vendor/persist /vendor/persist
+        exec chmod 775 -R /vendor/app/t6/*
 	write /proc/bootprof "tkcore: prepare system ta path"
 
 	write /proc/bootprof "tkcore: prepare persist sfs"
