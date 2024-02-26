@@ -109,12 +109,14 @@ TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
 TW_EXCLUDE_NANO := true
 TW_EXCLUDE_PYTHON := true
+TW_EXCLUDE_VIBRATION := true
 
 # Device
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 225
 TW_DEFAULT_BRIGHTNESS := 100
-TW_NO_HAPTICS := true # not supported by device
+# not supporting vibration
+TW_NO_HAPTICS := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 
