@@ -37,7 +37,8 @@ BOARD_KERNEL_IMAGE_NAME := Image
 
 BOARD_KERNEL_CMDLINE := \
        bootopt=64S3,32S1,32S1 \
-       androidboot.selinux=permissive 
+       androidboot.selinux=permissive \
+       androidboot.trustkernel
 
 TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := $(PREBUILT_DIR)/kernel
@@ -87,6 +88,7 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 # System-as-root and metadata
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_HAS_METADATA_PARTITION := true
 
 # create a directory named metadata in the root directory
 BOARD_ROOT_EXTRA_FOLDERS += metadata
@@ -119,6 +121,7 @@ TW_DEFAULT_BRIGHTNESS := 100
 TW_NO_HAPTICS := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
+TW_RECOVERY_FORMAT_SUPPORTS_METADATA := true
 
 # Crypto binary
 TW_INCLUDE_CRYPTO := true
