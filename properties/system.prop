@@ -2,9 +2,9 @@
 ro.vndk.lite=false
 
 # Crypto
+ro.crypto.type=block
+ro.crypto.metadata_init_delete_all_keys.enabled=false
 ro.crypto.volume.filenames_mode=aes-256-cts
-ro.hardware.kmsetkey=trustkernel
-ro.hardware.gatekeeper=trustkernel
 
 # MediaTek
 ro.mtk_bsp_package=1
@@ -13,3 +13,8 @@ ro.mediatek.platform=MT6739
 
 # Kernel
 ro.logd.kernel=false
+
+# Device
+persist.sys.isUsbOtgEnabled=true
+ro.debuggable=1
+ro.secure=0
