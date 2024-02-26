@@ -1,0 +1,15 @@
+# VNDK is not in lite mode
+ro.vndk.lite=false
+
+# Crypto
+ro.crypto.volume.filenames_mode=aes-256-cts
+ro.hardware.kmsetkey=trustkernel
+ro.hardware.gatekeeper=trustkernel
+
+# MediaTek
+ro.mtk_bsp_package=1
+ro.mediatek.chip_ver=S01
+ro.mediatek.platform=MT6739
+
+# Kernel
+ro.logd.kernel=false
