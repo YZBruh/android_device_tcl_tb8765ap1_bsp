@@ -73,7 +73,7 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/properties/system.prop
 
 # Copy the twrp.flags into recovery image
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/system/etc/twrp.flags:$(TARGET_COPY_OUT_RECOVERY)/root/etc/twrp.flags
+	$(DEVICE_PATH)/recovery/root/system/etc/twrp.flags:$(TARGET_COPY_OUT_RECOVERY)/root/etc/twrp.flags
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp,8088X,8088X_EEA
