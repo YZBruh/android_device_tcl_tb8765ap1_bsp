@@ -5,7 +5,6 @@ on post-fs
 	mkdir /mnt/vendor/nvdata 0771 root root
 	mkdir /mnt/vendor/nvcfg 0771 root root
         mkdir /mnt/vendor/persist 0755 root root
-        restorecon /mnt/vendor/persist
 	mount ext4 /dev/block/by-name/protect1 /mnt/vendor/protect_f rw wait
 	mount ext4 /dev/block/by-name/protect2 /mnt/vendor/protect_s rw wait
 	mount ext4 /dev/block/by-name/nvdata /mnt/vendor/nvdata rw wait
@@ -17,8 +16,6 @@ on post-fs
 	symlink /mnt/vendor/nvdata /vendor/nvdata
         symlink /mnt/vendor/persist /vendor/persist
 	write /proc/bootprof "tkcore: prepare system ta path"
-
-        restorecon /mnt/vendor/persist/t6
 
 	write /proc/bootprof "tkcore: prepare persist sfs"
 
