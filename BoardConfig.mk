@@ -67,6 +67,9 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_BOARD_PLATFORM := mt6739
 BOARD_USES_MTK_HARDWARE := true
 
+# Trustkernel - TrustyZone
+TARGET_USES_TRUSTY := true
+
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
