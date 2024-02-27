@@ -1,6 +1,13 @@
 import /trustkernel.rc
 
 on init
+    mkdir /vendor/lib 0700 root root
+    mkdir /vendor/lib/hw 0700 root root
+    symlink /vendor/manifest.xml /system_root/system/manifest.xml
+    symlink /sbin/keystore.mt6739.so /vendor/lib/hw/keystore.mt6739.so
+    symlink /sbin/keystore.v2.trustkernel.so /vendor/lib/hw/keystore.v2.trustkernel.so
+    symlink /sbin/gatekeeper.mt6739.so /vendor/lib/hw/gatekeeper.mt6739.so
+
     # Create a more standard /dev/block layout for our scripts
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 
@@ -75,12 +82,20 @@ service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service
     disabled
     seclabel u:r:recovery:s0
 
+service attestation-1-1 /sbin/vendor.mediatek.hardware.keymaster_attestation@1.1-service
+    interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
+    class hal
+    disabled
+    seclabel u:r:recovery:s0
+
 on property:crypto.ready=0
     stop keymaster-3-0
     stop gatekeeper-1-0
     stop servicemanager
+    stop attestation-1-1
 
 on property:vendor.sys.listeners.registered=true
     start keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
+    start attestation-1-1
