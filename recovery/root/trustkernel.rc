@@ -1,9 +1,9 @@
 on post-fs
         mkdir /mnt/vendor 0755 root root
-	mkdir /mnt/vendor/protect_f 0770 root root
-	mkdir /mnt/vendor/protect_s 0770 root root
-	mkdir /mnt/vendor/nvdata 0771 root root
-	mkdir /mnt/vendor/nvcfg 0771 root root
+	mkdir /mnt/vendor/protect_f 0771 root root
+	mkdir /mnt/vendor/protect_s 0771 root root
+	mkdir /mnt/vendor/nvdata 0750 root root
+	mkdir /mnt/vendor/nvcfg 0750 root root
         mkdir /mnt/vendor/persist 0755 root root
 	mount ext4 /dev/block/by-name/protect1 /mnt/vendor/protect_f rw wait
 	mount ext4 /dev/block/by-name/protect2 /mnt/vendor/protect_s rw wait
@@ -15,10 +15,12 @@ on post-fs
 	symlink /mnt/vendor/nvcfg /vendor/nvcfg
 	symlink /mnt/vendor/nvdata /vendor/nvdata
         symlink /mnt/vendor/persist /vendor/persist
-        exec u:r:shell:s0 /sbin/chmod 777 -R /vendor/app/t6/*
 	write /proc/bootprof "tkcore: prepare system ta path"
 
 	write /proc/bootprof "tkcore: prepare persist sfs"
+        mkdir /mnt/vendor/persist/t6
+	setprop vendor.trustkernel.fs.mode 2
+	setprop vendor.trustkernel.fs.state ready
 
 	start teed
 
