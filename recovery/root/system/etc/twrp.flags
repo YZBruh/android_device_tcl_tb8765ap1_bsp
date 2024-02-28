@@ -25,6 +25,7 @@
 /bootloader                  emmc        /dev/block/by-name/lk              flags=display="LK";backup=1;flashimg=1
 /bootloader2                 emmc        /dev/block/by-name/lk2             flags=display="LK2";backup=1;flashimg=1
 /misc                        emmc        /dev/block/by-name/para            flags=display="MİSC";backup=1;flashimg=1
+/metadata                    emmc        /dev/block/by-name/metadata        flags=display="Metadata";backup=1;flashimg=1
 /logo                        emmc        /dev/block/by-name/logo            flags=display="Logo";backup=1;flashimg=1
 /expdb                       emmc        /dev/block/by-name/expdb           flags=display="EXPDB";backup=1;flashimg=1
 /seccfg                      emmc        /dev/block/by-name/seccfg          flags=display="SECCFG";backup=1;flashimg=1
