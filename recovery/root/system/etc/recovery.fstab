@@ -1,9 +1,11 @@
 # mount point               fstype              device                 device2                   flags
 
 # Main Partitions ext4
-/dev/block/platform/bootdevice/by-name/system          /system         ext4        ro      mounttodecrypt
-/dev/block/platform/bootdevice/by-name/vendor          /vendor         ext4        ro      mounttodecrypt
+/dev/block/by-name/system          /system         ext4        ro      mounttodecrypt
+/dev/block/by-name/vendor          /vendor         ext4        ro      mounttodecrypt
 
-# Other Partitions                                                                                    
-/dev/block/platform/bootdevice/by-name/userdata        /data           ext4        rw      noatime,nosuid,nodev,noauto_da_alloc,errors=panic wait,check,formattable,quota,reservedsize=128m,formattable,resize,encryptable=/dev/block/platform/bootdevice/by-name/metadata
-/dev/block/platform/bootdevice/by-name/cache           /cache          ext4        rw
+# Other Partitions
+/dev/block/by-name/metadata        /metadata       emmc
+/dev/block/by-name/para            /misc           emmc
+/dev/block/by-name/userdata        /data           ext4        rw      noatime,nosuid,nodev,noauto_da_alloc,errors=panic wait,check,formattable,quota,reservedsize=128m,formattable,resize,encryptable=/dev/block/platform/bootdevice/by-name/metadata
+/dev/block/by-name/cache           /cache          ext4        rw
