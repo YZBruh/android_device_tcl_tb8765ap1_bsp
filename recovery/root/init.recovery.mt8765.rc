@@ -4,7 +4,6 @@ on init
     setprop ro.vndk.lite false
     mkdir /vendor/lib 0700 root root
     mkdir /vendor/lib/hw 0700 root root
-    symlink /vendor/etc/vintf/manifest.xml /system/manifest.xml
     symlink /sbin/keystore.mt6739.so /vendor/lib/hw/keystore.mt6739.so
     symlink /sbin/keystore.v2.trustkernel.so /vendor/lib/hw/keystore.v2.trustkernel.so
     symlink /sbin/gatekeeper.mt6739.so /vendor/lib/hw/gatekeeper.mt6739.so
