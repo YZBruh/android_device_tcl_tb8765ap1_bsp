@@ -1,8 +1,8 @@
 # mount point               fstype              device                 device2                   flags
 
 # Main Partitions ext4
-/dev/block/by-name/system          /system         ext4        ro      mounttodecrypt
-/dev/block/by-name/vendor          /vendor         ext4        ro      mounttodecrypt
+/dev/block/by-name/system          /system         ext4        ro 
+/dev/block/by-name/vendor          /vendor         ext4        ro 
 
 # Other Partitions
 /dev/block/by-name/metadata        /metadata       emmc
