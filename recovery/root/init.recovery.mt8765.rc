@@ -28,6 +28,12 @@ on post-fs-data
     symlink /dev/block/mmcblk0boot0 /dev/block/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/by-name/preloader_b
 
+on fs
+    install_keyring
+    setprop crypto.ready 1
+    start hwservicemanager
+    start servicemanager
+
 on property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP
     write /sys/class/udc/musb-hdrc/device/cmode 2
