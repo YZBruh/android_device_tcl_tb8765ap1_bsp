@@ -130,6 +130,8 @@ TW_EXCLUDE_TWRPAPP := true
 TW_EXCLUDE_SUPERSU := true
 TW_EXCLUDE_PYTHON := true
 TW_EXCLUDE_NANO := true
+TW_EXCLUDE_APEX := true
+TW_EXTRA_LANGUAGES := false
 
 # Device
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
