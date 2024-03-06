@@ -87,14 +87,38 @@ service attestation-1-1 /sbin/vendor.mediatek.hardware.keymaster_attestation@1.1
     disabled
     seclabel u:r:recovery:s0
 
-on property:crypto.ready=1
-    stop keymaster-3-0
-    stop gatekeeper-1-0
-    stop servicemanager
-    stop attestation-1-1
+on property:hwservicemanager.ready=true
+    start keymaster-3-0
+    start gatekeeper-1-0
+    start servicemanager
+    start attestation-1-1
 
 on property:vendor.sys.listeners.registered=true
     start keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
     start attestation-1-1
+
+on property:crypto.ready=1
+    start keymaster-3-0
+    start gatekeeper-1-0
+    start servicemanager
+    start attestation-1-1
+
+on property:ro.crypto.state=unsupported
+    stop keymaster-3-0
+    stop gatekeeper-1-0
+    stop servicemanager
+    stop attestation-1-1
+
+on property:ro.crypto.state=unencrypted
+    stop keymaster-3-0
+    stop gatekeeper-1-0
+    stop servicemanager
+    stop attestation-1-1
+
+on property:twrp.decrypt.done=true
+    stop keymaster-3-0
+    stop gatekeeper-1-0
+    stop servicemanager
+    stop attestation-1-1
