@@ -26,7 +26,7 @@ Medium checks
 - [X] backup/restore to/from external (USB-OTG) storage
 - [X] backup/restore to/from adb (https://gerrit.omnirom.org/#/c/15943/)
 - [ ] decrypt /data
-- [X] Correct date
+- [ ] Correct date
 
 Minor checks
 - [X] MTP export
