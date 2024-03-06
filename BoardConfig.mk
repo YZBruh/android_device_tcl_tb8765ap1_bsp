@@ -83,9 +83,14 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/properties/system.prop
 
-# Copy the twrp.flags into recovery image
+# Copy the twrp.flags into recovery image and remove vibrator libraries
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/recovery/root/system/etc/twrp.flags:$(TARGET_COPY_OUT_RECOVERY)/root/etc/twrp.flags
+
+PRODUCT_REMOVE_FILES += \
+        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.0.so \
+        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.1.so \
+        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.2.so
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp,8088X,8088X_EEA
@@ -122,6 +127,7 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
+TW_EXCLUDE_SUPERSU := true
 TW_EXCLUDE_PYTHON := true
 TW_EXCLUDE_NANO := true
 
