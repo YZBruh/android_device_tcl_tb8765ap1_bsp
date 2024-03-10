@@ -43,6 +43,7 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_CMDLINE := \
        bootopt=64S3,32S1,32S1 \
        androidboot.selinux=permissive \
+       androidboot.init_fatal_reboot_target=recovery \
        androidboot.trustkernel
 
 TARGET_FORCE_PREBUILT_KERNEL := true
