@@ -1,4 +1,4 @@
-import /trustkernel.rc
+import /init.recovery.trustkernel.rc
 
 on init
     # Create a more standard /dev/block layout for our scripts
