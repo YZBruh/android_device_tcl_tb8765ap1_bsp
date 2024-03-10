@@ -69,6 +69,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := false
 TARGET_COPY_OUT_VENDOR := vendor
 
+# AVB (Android Verified Boot)
+BOARD_AVB_ENABLE := true
+
 # Hardware
 TARGET_BOARD_PLATFORM := mt6739
 
