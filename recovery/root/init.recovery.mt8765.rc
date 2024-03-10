@@ -31,6 +31,7 @@ on post-fs-data
 on fs
     install_keyring
     setprop crypto.ready 1
+    start teed
     start hwservicemanager
     start servicemanager
 
@@ -75,50 +76,59 @@ service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service
-    user root
-    group root
+service vendor.keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service
+    class early_hal
     disabled
     seclabel u:r:recovery:s0
 
-service attestation-1-1 /sbin/vendor.mediatek.hardware.keymaster_attestation@1.1-service
+service keymaster_attestation-1-1 /sbin/vendor.mediatek.hardware.keymaster_attestation@1.1-service
     interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
     class hal
     disabled
     seclabel u:r:recovery:s0
 
+service teed /vendor/bin/teed \
+    --datapath /data/vendor/t6/fs \
+    --sptapath /data/vendor/t6/app \
+    --systapath /vendor/app/t6 \
+    --prot /mnt/vendor/persist/t6 \
+    --logpath /data/vendor/t6/tkcore.log \
+    --proprefix vendor.trustkernel
+    disabled
+    seclabel u:r:recovery:s0
+
 on property:hwservicemanager.ready=true
-    start keymaster-3-0
+    start vendor.keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
-    start attestation-1-1
+    start keymaster_attestation-1-1
 
 on property:vendor.sys.listeners.registered=true
-    start keymaster-3-0
+    start vendor.keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
-    start attestation-1-1
+    start keymaster_attestation-1-1
 
 on property:crypto.ready=0
-    start keymaster-3-0
+    start vendor.keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
-    start attestation-1-1
+    start keymaster_attestation-1-1
 
 on property:ro.crypto.state=unsupported
-    stop keymaster-3-0
+    stop vendor.keymaster-3-0
     stop gatekeeper-1-0
     stop servicemanager
-    stop attestation-1-1
+    stop keymaster_attestation-1-1
 
 on property:ro.crypto.state=unencrypted
-    stop keymaster-3-0
+    stop vendor.keymaster-3-0
     stop gatekeeper-1-0
     stop servicemanager
-    stop attestation-1-1
+    stop keymaster_attestation-1-1
 
 on property:twrp.decrypt.done=true
-    stop keymaster-3-0
+    stop vendor.keymaster-3-0
     stop gatekeeper-1-0
     stop servicemanager
-    stop attestation-1-1
+    stop keymaster_attestation-1-1
