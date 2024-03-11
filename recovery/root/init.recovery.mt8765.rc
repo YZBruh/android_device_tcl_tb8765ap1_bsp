@@ -34,6 +34,9 @@ on fs
     start teed
     start hwservicemanager
     start servicemanager
+    start vendor.keymaster-3-0
+    start gatekeeper-1-0
+	start keymaster_attestation-1-1
 
 on property:ro.debuggable=0
     # distinguish USB shoulde connect or not, i.e. CDP vs SDP
