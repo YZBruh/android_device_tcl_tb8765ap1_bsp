@@ -61,7 +61,7 @@ service teed /sbin/teed \
     --datapath /data/vendor/t6/fs \
     --sptapath /data/vendor/t6/app \
     --systapath /vendor/app/t6 \
-    --prot /mnt/vendor/persist/t6 \
+    --prot /mnt/vendor/persist/t6_tw \
     --logpath /data/vendor/t6/tkcore.log \
     --proprefix vendor.trustkernel
 	user root
