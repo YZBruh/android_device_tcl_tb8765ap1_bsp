@@ -1,20 +1,22 @@
 on post-fs
         mkdir /mnt/vendor
-	mkdir /mnt/vendor/protect_f
-	mkdir /mnt/vendor/protect_s
-	mkdir /mnt/vendor/nvdata
-	mkdir /mnt/vendor/nvcfg
-        mkdir /mnt/vendor/persist
+	mkdir /mnt/vendor/protect_f 770 system system
+	mkdir /mnt/vendor/protect_s 770 system system
+	mkdir /mnt/vendor/nvdata 755 system system
+	mkdir /mnt/vendor/nvcfg 771 system system
+        mkdir /mnt/vendor/persist 771 system system
 	mount ext4 /dev/block/by-name/protect1 /mnt/vendor/protect_f rw wait
 	mount ext4 /dev/block/by-name/protect2 /mnt/vendor/protect_s rw wait
 	mount ext4 /dev/block/by-name/nvdata /mnt/vendor/nvdata rw wait
 	mount ext4 /dev/block/by-name/nvcfg /mnt/vendor/nvcfg rw wait
         mount ext4 /dev/block/by-name/persist /mnt/vendor/persist rw wait
+        mkdir /mnt/vendor/persist/t6_twrp 0755 system system
 	symlink /mnt/vendor/protect_f /vendor/protect_f
 	symlink /mnt/vendor/protect_s /vendor/protect_s
 	symlink /mnt/vendor/nvcfg /vendor/nvcfg
 	symlink /mnt/vendor/nvdata /vendor/nvdata
         symlink /mnt/vendor/persist /vendor/persist
+        exec u:r:recovery:s0 root -- /vendor/bin/prepare_persist.sh
 
 	write /proc/bootprof "tkcore: prepare system ta path"
 
