@@ -90,17 +90,20 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/properties/system.prop
 
-# Copy the twrp.flags into recovery image and remove vibrator libraries
+# Copy the twrp.flags into recovery image and remove vibrator libraries etc.
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/recovery/root/system/etc/twrp.flags:$(TARGET_COPY_OUT_RECOVERY)/root/etc/twrp.flags
 
 PRODUCT_REMOVE_FILES += \
         $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.0.so \
         $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.1.so \
-        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.2.so
+        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.2.so \
+        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/me.twrp.twrpapp.apk \
+        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.system.wifi.keystore@1.0.so \
+        $(TARGET_COPY_OUT_RECOVERY)/root/sbin/libwifikeystorehal.so
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp,8088X,8088X_EEA
+TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
@@ -130,6 +133,7 @@ TW_HAS_MTP := true
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_DEFAULT_LANGUAGE := en
 TW_NO_SCREEN_BLANK := true
+TW_NO_SCREEN_TIMEOUT := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_INCLUDE_REPACKTOOLS := true
@@ -158,8 +162,7 @@ TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_RECOVERY_FORMAT_SUPPORTS_METADATA := true
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/data"
-TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,"
-TW_INCLUDE_REPACKTOOLS := true
+TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc"
 TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
