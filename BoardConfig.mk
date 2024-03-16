@@ -170,3 +170,16 @@ TW_USE_FSCRYPT_POLICY := 2
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
+
+# SHRP Flags
+SHRP_PATH := device/tcl/tb8765ap1_bsp
+SHRP_MAINTAINER := YZBruh
+SHRP_DEVICE_CODE := tb8765ap1_bsp
+SHRP_REC_TYPE := normal
+SHRP_DEVICE_TYPE := A_Only
+SHRP_EDL_MODE := 0
+SHRP_FLASH := 0
+SHRP_REC := /dev/block/by-name/recovery
+SHRP_EXTERNAL := /external_sd
+SHRP_INTERNAL := /sdcard
+SHRP_OTG := /usb_otg
