@@ -100,6 +100,8 @@ PRODUCT_REMOVE_FILES += \
         $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.1.so \
         $(TARGET_COPY_OUT_RECOVERY)/root/sbin/android.hardware.vibrator@1.2.so
 
+TARGET_RECOVERY_DEVICE_MODULES := 
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := tb8765ap1_bsp,8088X,8088X_EEA
 
@@ -114,10 +116,14 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_HAS_METADATA_PARTITION := true
 
+# adapt new init
+TARGET_INIT_VENDOR_LIB := libinit_tb8765ap1_bsp
+
 # Recovery modules
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster3 \
-    libpuresoftkeymasterdevice
+    libpuresoftkeymasterdevice \
+    libinit_tb8765ap1_bsp
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster3.so \
