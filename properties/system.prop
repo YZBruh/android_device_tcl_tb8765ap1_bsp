@@ -18,3 +18,4 @@ ro.logd.kernel=false
 persist.sys.isUsbOtgEnabled=true
 ro.debuggable=1
 ro.secure=0
+ro.display.series=Alcatel 3T 10
