@@ -47,13 +47,15 @@ BOARD_KERNEL_CMDLINE := \
        androidboot.trustkernel
 
 TARGET_FORCE_PREBUILT_KERNEL := true
+BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_PREBUILT_KERNEL := $(PREBUILT_DIR)/kernel
 BOARD_PREBUILT_DTBOIMAGE := $(PREBUILT_DIR)/dtbo.img
 BOARD_KERNEL_SEPARATED_DTBO := 
 
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS += \
+        --header_version $(BOARD_BOOTIMG_HEADER_VERSION) \
+        --ramdisk_offset $(BOARD_RAMDISK_OFFSET) \
+        --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 # Boot and recovery partition sizes
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -86,7 +88,6 @@ PRODUCT_FULL_TREBLE_OVERRIDE := true
 BOARD_VNDK_VERSION := current
 
 # Recovery
-BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/properties/system.prop
 
@@ -113,14 +114,21 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_HAS_METADATA_PARTITION := true
 
-# create a directory named metadata in the root directory
-BOARD_ROOT_EXTRA_FOLDERS += metadata
-
+# Recovery modules
 TARGET_RECOVERY_DEVICE_MODULES += \
-        libpuresoftkeymasterdevice
+    libkeymaster3 \
+    libpuresoftkeymasterdevice
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster3.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
+TW_RECOVERY_ADDIONITAL_RELINK_LIBRARY_FILES := \
+        $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster3device.so \
         $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
+TW_RECOVERY_ADDIONITAL_RELINK_BINARY_FILES += \
+        $(TARGET_OUT_EXECUTABLES)/teed
 
 # TWRP Configuration
 RECOVERY_VARIANT := twrp
@@ -149,21 +157,16 @@ TW_EXTRA_LANGUAGES := false
 # Device
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 225
-TW_DEFAULT_BRIGHTNESS := 85
+TW_DEFAULT_BRIGHTNESS := 80
 # not supporting vibration
 TW_EXCLUDE_VIBRATION := true
 TW_NO_HAPTICS := true
-RECOVERY_SDCARD_ON_DATA := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_RECOVERY_FORMAT_SUPPORTS_METADATA := true
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/data"
 TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,"
 TW_INCLUDE_REPACKTOOLS := true
-TW_INTERNAL_STORAGE_PATH := "/data/media/0"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 
 # Crypto binary
 TW_USE_FSCRYPT_POLICY := 2
