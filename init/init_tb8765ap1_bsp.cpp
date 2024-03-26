@@ -92,27 +92,16 @@ void vendor_load_properties() {
 
     /* check prop value */
     if (!property_value.empty()) {
-        switch (property_value) {
-            /* load global props */
-           case "8088X":
-                load_model("8088X");
-                break;
-           /* load Q variant */
-           case "8088Q":
-                load_model("8088Q");
-                break;
-           /* load L variant */
-           case "8088L":
-                load_model("8088L");
-                break;
-            /* load eea props */
-           case "8088X_EEA":
-                load_model("8088X_EEA");
-                break;
-            /* I hope not */
-            case '?':
-                LOG(ERROR) << __func__ << ": unexpected propertie!";
-                break;
+        if (property_value == "8088X") {
+            load_model("8088X");
+        } else if (property_value == "8088Q") {
+            load_model("8088Q");
+        } else if (property_value == "8088L") {
+            load_model("8088L");
+        } else if (property_value == "8088X_EEA") {
+            load_model("8088X_EEA");
+        } else {
+            LOG(ERROR) << __func__ << ": unexpected propertie!";
         }
     } else {
         LOG(ERROR) << __func__ << ": vendor propertie not found; ro.product.vendor.model";
