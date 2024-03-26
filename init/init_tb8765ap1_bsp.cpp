@@ -97,6 +97,14 @@ void vendor_load_properties() {
            case "8088X":
                 load_model("8088X");
                 break;
+           /* load Q variant */
+           case "8088Q":
+                load_model("8088Q");
+                break;
+           /* load L variant */
+           case "8088L":
+                load_model("8088L");
+                break;
             /* load eea props */
            case "8088X_EEA":
                 load_model("8088X_EEA");
