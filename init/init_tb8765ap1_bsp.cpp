@@ -94,11 +94,11 @@ void vendor_load_properties() {
     if (!property_value.empty()) {
         switch (property_value) {
             /* load global props */
-            case '8088X':
+           case "8088X":
                 load_model("8088X");
                 break;
             /* load eea props */
-            case '8088X_EEA':
+           case "8088X_EEA":
                 load_model("8088X_EEA");
                 break;
             /* I hope not */
