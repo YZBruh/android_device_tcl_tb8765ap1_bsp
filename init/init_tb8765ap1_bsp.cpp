@@ -52,9 +52,24 @@ void load_model(const char *model) {
     property_set("ro.display.series", "Alcatel 3T 10");
 }
 
+void cleanup_old_control_parts() {
+    /* umount vendor */
+    if (umount("/vendorcontrol") != 0) {
+        LOG(ERROR) << __func__ << ": vendor not unmounting!";
+    }
+
+    /* delete control dir */
+    if (rmdir("/vendorcontrol") != 0) {
+        LOG(ERROR) << __func__ << ": control dir cannot delete!";
+    }
+}
+
 void vendor_load_properties() {
     /* Create the directory to which the vendor will connect  */
     if (mkdir("/vendorcontrol", 0644) != 0) {
+        if (rmdir("/vendorcontrol") != 0) {
+            LOG(ERROR) << __func__ << ": control dir cannot delete!";
+        }
         LOG(ERROR) << __func__ << ": control dir cannot generate!";
     }
 
@@ -69,6 +84,7 @@ void vendor_load_properties() {
 
     /* open /vendor/build.prop */
     if (!file.is_open()) {
+        cleanup_old_control_parts();
         LOG(ERROR) << __func__ << ": vendor propertie file not found!";
     }
 
@@ -101,21 +117,15 @@ void vendor_load_properties() {
         } else if (property_value == "8088X_EEA") {
             load_model("8088X_EEA");
         } else {
+            cleanup_old_control_parts();
             LOG(ERROR) << __func__ << ": unexpected propertie!";
         }
     } else {
+        cleanup_old_control_parts();
         LOG(ERROR) << __func__ << ": vendor propertie not found; ro.product.vendor.model";
     }
 
-    /* umount vendor */
-    if (umount("/vendorcontrol") != 0) {
-        LOG(ERROR) << __func__ << ": vendor not unmounting!";
-    }
-
-    /* delete control dir */
-    if (rmdir("/vendorcontrol") != 0) {
-        LOG(ERROR) << __func__ << ": control dir cannot delete!";
-    }
+    cleanup_old_control_parts();
 }
 
 }  // namespace init
